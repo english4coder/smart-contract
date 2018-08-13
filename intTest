@@ -1,0 +1,13 @@
+pragma solidity ^0.4.24;
+
+contract IntTest{    
+    //int默认是int256
+    function demo01() returns (int,uint,int){
+        int8 num1 = -128;    // int8范围是-128 ~127   
+        uint8 num2 = 255;    // uint8范围：0~255
+        
+        var num3 = num; 	
+        num3 = num2;		// 赋值之后类型不能改变，会报错
+        return (num,num2,num3);
+    }
+}
