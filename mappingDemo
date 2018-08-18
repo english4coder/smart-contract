@@ -1,0 +1,24 @@
+pragma solidity ^0.4.24;
+
+contract MappingDemo{    
+    // 定义结构体
+    struct Person{
+        string name;
+        uint age;
+    }
+    
+    // 地址与个人建立映射
+    mapping(address => Person) public personMap;
+    
+    // 初始化
+    function initPerson(string _name,uint _age){
+        // 创建一个结构体对象
+        personMap[msg.sender] = Person({name:_name,age:_age});
+    }
+    
+    // 展示个人信息
+    function showInfo() returns(string,uint){
+        Person p = personMap[msg.sender];
+        return (p.name,p.num);
+    }    
+}
