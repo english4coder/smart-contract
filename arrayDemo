@@ -1,0 +1,30 @@
+pragma solidity ^0.4.24;
+
+contract ArrayDemo{
+    uint[] grade =  [1,2,3,4,5];   
+
+    // 获取内容
+    function getContent() constant returns(uint[]){
+         return grade;
+    }
+
+	  // 修改内容
+    function changeContent()  {
+        grade[0] = 200;
+        grade[1] = 300;
+    }
+
+    // 获取长度
+    function getLength() constant returns(uint){
+        return grade.length;
+    }
+
+    // 累加
+    function add() constant returns(uint){
+        uint sum = 0;
+        for(uint i = 0;i<grade.length;i++){
+            sum += grade[i];
+        }
+        return sum;
+    }
+}
