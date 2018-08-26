@@ -1,0 +1,66 @@
+pragma solidity ^0.4.24;
+
+// 定义WiFi接口
+interface Wifi{
+     function wifi() public returns(string);
+}
+
+// 定义蓝牙接口
+interface BlueTooth{
+    function blue() public returns(string);
+}
+
+// 抽象合约(不能实例化)
+contract Phone{    
+    function start() internal returns (string){
+        return "调用开机的功能";
+    }
+    
+    function close() internal returns (string){
+        return "调用了关机的功能";
+    }
+    
+    // 由于闹钟每个手机实现不相同,因此定义为抽象函数
+    function alarm() internal returns (string);
+}
+
+// Mi手机,实现闹钟、Wifi功能
+contract Mi is Phone,Wifi{   
+   function wifi() public returns(string){
+       return "小米实现wifi功能";
+   }
+   
+   function alarm() internal returns (string){
+       return "小米实现闹钟功能";
+   }
+   
+   function show() returns (string,string){
+       return (wifi(),alarm());
+   }
+}
+
+// iPhone实现全部功能
+contract Iphone is Phone,Wifi,BlueTooth{    
+    function wifi() public returns(string){
+       return "Iphone实现wifi功能";
+   }
+   
+   function alarm() internal returns (string){
+       return "Iphone实现闹钟功能";
+   }
+   
+   function blue() public returns(string){
+       return "Iphone实现了蓝牙功能";
+   }
+   
+   function show() returns (string,string){
+       return (start(),close());
+   }    
+}
+
+
+
+
+
+
+
